@@ -4,6 +4,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using VBP_ParkingApp.Classes;
+using Java.IO;
+using System.IO;
 
 namespace VBP_ParkingApp.Droid
 {
@@ -13,7 +16,8 @@ namespace VBP_ParkingApp.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            StaticData.AppContext = this;
+            StaticData.connectionString = StaticData.Connection_Settings(this, StaticData.settingPath);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -24,5 +28,6 @@ namespace VBP_ParkingApp.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

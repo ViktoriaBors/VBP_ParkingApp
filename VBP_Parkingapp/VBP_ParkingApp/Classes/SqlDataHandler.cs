@@ -1,14 +1,15 @@
-﻿using MySqlConnector;
+﻿using Android.Content;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace VBP_ParkingApp.Classes
 {
     class SqlDataHandler
     {
-        private static string connectionStr = "server=mysql.nethely.hu;uid=parkingapp;pwd=prooktatas2024;database=parkingapp";
-        private static MySqlConnection connection = new MySqlConnection(connectionStr); //winformnál Mysql.data, itt inkább mysql.connecor
+        private static MySqlConnection connection = new MySqlConnection(StaticData.connectionString); 
 
         public static FunctionResult FinishedParkingPeriodSave(ParkingPeriod newParking)
         {
