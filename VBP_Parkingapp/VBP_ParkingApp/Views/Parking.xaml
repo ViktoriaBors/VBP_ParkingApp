@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VBP_ParkingApp.Views.Parking">
+    <ContentPage.Content>
+
+        <Grid>
+            <Image Source="bg.jpg" Aspect="AspectFill" />
+            <Grid Margin="20" Opacity="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" >
+                    <Frame BackgroundColor="#152E33" CornerRadius="15" BorderColor="#dbdbdb">
+                        <Frame.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#152E33" Offset="0" />
+                                <GradientStop Color="#3399CC" Offset="0.5" />
+                                <GradientStop Color="#152E33" Offset="1" />
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Label Text="Parking" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="#f0f0f0"/>
+                    </Frame>
+                    <BoxView Color="#152E33" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout x:Name="numberPlateStackL" Grid.Row="1" Grid.ColumnSpan="2" >
+                    <Label x:Name="infoLbl" FontSize="18" FontAttributes="Bold" Text="There is no saved plate numbers to choose." VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                    <Button x:Name="settingsBtn" Clicked="settingsBtn_Clicked" Text="Add platenumbers" BackgroundColor="#50ab65" CornerRadius="15" BorderColor="#dbdbdb" TextColor="#dbdbdb" FontAttributes="Bold" BorderWidth="1">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#50ab65" Offset="0" />
+                                <GradientStop Color="#152E33" Offset="0.5" />
+                                <GradientStop Color="#50ab65" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <CarouselView x:Name="platenumberCV">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True"
+                       BorderColor="DarkGray"
+                       CornerRadius="5"
+                       Margin="20"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                                           BackgroundColor="#dbdbdb">
+                                        <StackLayout>
+                                            <Label Text="{Binding NumberPlateNr}"
+                               FontAttributes="Bold"
+                               FontSize="36"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" 
+                                                   TextColor="#152E33"/>
+                                            <Image  Source="{Binding ImgUrl}"
+                               Aspect="AspectFill"
+                               HorizontalOptions="Center" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <IndicatorView x:Name="indicatorView"
+                   IndicatorColor="#dbdbdb"
+                   SelectedIndicatorColor="#152E33"
+                   HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2"  x:Name="currentParkingOnStackL" IsVisible="false">
+                    <Image x:Name="ImageForCurrentParking"></Image>
+                    <Label x:Name="currenParkingOnNumberPlateLbl"  TextColor="#50ab65" FontSize="24" FontAttributes="Bold"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                    <Label x:Name="currenParkingOnLbl" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="0" >
+                    <Button x:Name="startBtn" Clicked="startBtn_Clicked" Text="Start" BackgroundColor="#50ab65" CornerRadius="15" BorderColor="#dbdbdb" TextColor="#dbdbdb" FontAttributes="Bold" BorderWidth="1">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#50ab65" Offset="0" />
+                                <GradientStop Color="#152E33" Offset="0.5" />
+                                <GradientStop Color="#50ab65" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="1" >
+                    <Button x:Name="backBtn" Clicked="backBtn_Clicked" Text="Back" CornerRadius="15" BorderColor="#dbdbdb" BorderWidth="1">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#3399CC" Offset="0" />
+                                <GradientStop Color="#4A87AB" Offset="0.5" />
+                                <GradientStop Color="#3399CC" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
